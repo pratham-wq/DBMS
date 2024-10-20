@@ -1,0 +1,71 @@
+CREATE TABLE STUDENT(
+    USN VARCHAR(30) PRIMARY KEY,
+    NAME VARCHAR(30),
+    DATE_OF_BIRTH DATE,
+    BRANCH VARCHAR(30),
+    MARKS1 INT,
+    MARKS2 INT,
+    MARKS3 INT,
+    TOTAL INT,
+    GPA FLOAT
+);
+
+INSERT INTO STUDENTS VALUES('1001','AMAR','12-JUN-2001','MCA',89,82,92,0,0);
+INSERT INTO STUDENTS VALUES('1002','AKBAR','12-JUN-1999','MCA',70,65,91,0,0);
+INSERT INTO STUDENTS VALUES('1003','SANJAY','12-JUN-2001','MBA',69,90,90,0,0);
+INSERT INTO STUDENTS VALUES('1004','SAGAR','12-JUN-2000','MBA',78,80,91,0,0);
+INSERT INTO STUDENTS VALUES('1005','ADHI','12-JUN-1999','MBA',59,70,92,0,0);
+INSERT INTO STUDENTS VALUES('1007','LOKESH','12-JUN-01','MCA',52,52,93,0,0);
+
+
+*********************** Queries **********************************
+
+
+i. Update the column total by adding the columns mark1, mark2, mark3.
+
+UPDATE STUDENTS 
+SET TOTAL = MARKS1 + MARKS2 + MARKS3;
+
+
+ii. Find the GPA score of all the students. 
+
+UPDATE STUDENTS 
+SET GPA = (TOTAL / 30);
+
+iii. Find the students who born on a particular year of birth from the date_of_birth column. 
+
+SELECT * 
+FROM STUDENTS  
+WHERE DATE_OF_BIRTH LIKE '%99';
+
+
+iv. List the students who are studying in a particular branch of study. 
+
+SELECT * 
+FROM STUDENTS 
+WHERE BRANCH = 'MCA';
+
+
+v. Find the maximum GPA score of the student branch-wise. 
+
+SELECT BRANCH,MAX(GPA) 
+FROM STUDENTS  
+GROUP BY BRANCH;
+
+
+vi. Find the students whose name starts with the alphabet “S”. 
+
+SELECT NAME 
+FROM STUDENTS   
+WHERE NAME LIKE 'S%';
+
+
+vii. Find the students whose name ends with the alphabets “AR”.
+
+SELECT NAME 
+FROM STUDENTS  
+WHERE NAME LIKE '%AR';
+
+viii. Delete the student details whose USN is given as 1001
+
+DELETE FROM STUDENTS WHERE USN = '1001';
